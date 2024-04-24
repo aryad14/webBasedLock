@@ -6,6 +6,7 @@ import login from "./api/auth/login.js";
 import register from "./api/auth/register.js";
 import profile from "./api/auth/profile.js";
 import logout from "./api/auth/logout.js";
+import addLock from "./api/userData/addLock.js";
 dotenv.config();
 
 const app = express();
@@ -24,10 +25,12 @@ app.get("/login", (req, res) => {
   res.sendFile(__dirname + "../client/login.html");
 });
 
-app.use("/api", login);
-app.use("/api", register);
-app.use("/api", profile);
-app.use("/api", logout);
+app.use("/api/auth", login);
+app.use("/api/auth", register);
+app.use("/api/auth", profile);
+app.use("/api/auth", logout);
+
+app.use("/api/userData", addLock);
 
 app.listen(port, () => {
   console.log(`Server is running on port http://localhost:${port}`);

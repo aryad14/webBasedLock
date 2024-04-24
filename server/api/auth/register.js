@@ -6,7 +6,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 const router = express.Router();
 const db = getDatabase(appFirebase);
 
-router.post("/auth/register", async (req, res) => {
+router.post("/register", async (req, res) => {
   const auth = getAuth();
   const email = req.body.email
   const password = req.body.password

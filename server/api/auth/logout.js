@@ -6,7 +6,7 @@ import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 const router = express.Router();
 const db = getDatabase(appFirebase);
 
-router.get("/auth/logout", async (req, res) => {
+router.get("/logout", async (req, res) => {
   const auth = getAuth();
   signOut(auth)
     .then(() => {

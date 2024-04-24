@@ -6,7 +6,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 const router = express.Router();
 const db = getDatabase(appFirebase);
 
-router.get("/auth/profile", async (req, res) => {
+router.get("/profile", async (req, res) => {
   const auth = getAuth();
   onAuthStateChanged(auth, (user) => {
     if (user) {
