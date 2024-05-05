@@ -1,12 +1,14 @@
 import express from "express";
 import appFirebase from "./db.js";
 import dotenv from "dotenv";
+import path from "path";
 import { getDatabase } from "firebase/database";
 import login from "./api/auth/login.js";
 import register from "./api/auth/register.js";
 import profile from "./api/auth/profile.js";
 import logout from "./api/auth/logout.js";
 import addLock from "./api/userData/addLock.js";
+import unlock from "./api/userData/unlock.js";
 dotenv.config();
 
 const app = express();
@@ -18,11 +20,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("../client"));
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "../client/index.html");
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.get("/login", (req, res) => {
-  res.sendFile(__dirname + "../client/login.html");
+app.get("/register", (req, res) => {
+  res.sendFile(path.join(__dirname, "register.html"));
 });
 
 app.use("/api/auth", login);
@@ -31,6 +33,7 @@ app.use("/api/auth", profile);
 app.use("/api/auth", logout);
 
 app.use("/api/userData", addLock);
+app.use("/api/unlock", unlock);
 
 app.listen(port, () => {
   console.log(`Server is running on port http://localhost:${port}`);

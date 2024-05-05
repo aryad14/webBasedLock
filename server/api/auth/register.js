@@ -8,17 +8,24 @@ const db = getDatabase(appFirebase);
 
 router.post("/register", async (req, res) => {
   const auth = getAuth();
-  const email = req.body.email
-  const password = req.body.password
+  const firstName = req.body.firstName;
+  const lastName = req.body.lastName;
+  const email = req.body.email;
+  const password = req.body.password;
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      res.status(200).send(user);
+      const db_ref = db.ref("users/" + user.uid);
+      db_ref.set({
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        uid: user.uid
+      });
+      res.status(200).json({ message: true, uid: user.uid, email: user.email });
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      res.status(400).send(errorMessage);
+      res.status(400).send(error.message);
     });
 });
 
