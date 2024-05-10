@@ -17,6 +17,10 @@ const Homepage = () => {
 
     const [lockers, setLockers] = useState([]);
 
+    const addLocker = (locker) => {
+        setLockers(prevLockers => [...prevLockers, locker]);
+    };
+
     useEffect(() => {
         const fetchLockers = async () => {
             await fetch('http://localhost:3000/api/userData/getLocks', {
@@ -68,7 +72,11 @@ const Homepage = () => {
                     ))}
                 </div>
             </div>
-            <Modal isOpen={isModalOpen} closeModal={handleCloseModal} />
+            <Modal
+                addLocker={addLocker}
+                isOpen={isModalOpen}
+                closeModal={handleCloseModal}
+            />
         </React.Fragment>
     )
 }
