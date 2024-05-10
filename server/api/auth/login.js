@@ -13,7 +13,7 @@ router.post("/login", async (req, res) => {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      res.status(200).send(user);
+      res.status(200).json({message: true});
     })
     .catch((error) => {
       const errorCode = error.code;

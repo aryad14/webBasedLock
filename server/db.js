@@ -1,13 +1,13 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCtuTVstxPeQeBL0l1oxFQVOc_JNi0bZL8",
-  authDomain: "webbasedlock.firebaseapp.com",
-  projectId: "webbasedlock",
-  storageBucket: "webbasedlock.appspot.com",
-  messagingSenderId: "479184213621",
-  appId: "1:479184213621:web:41b83cecab3acd786a4a3c",
-  measurementId: "G-MLE1735RJB",
+  apiKey: "AIzaSyC6D0IgbBAMLupJGKmylNtSBkUachqEfFc",
+  authDomain: "webbasedlocknew.firebaseapp.com",
+  projectId: "webbasedlocknew",
+  storageBucket: "webbasedlocknew.appspot.com",
+  messagingSenderId: "791900597510",
+  appId: "1:791900597510:web:cc758bdb82709b5f6b0287",
+  measurementId: "G-2HLKJSKJNN"
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
